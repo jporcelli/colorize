@@ -78,28 +78,30 @@
                                 
                         for(var k = 0; k < cur_token.length; k++){
                             var token_char = cur_token.charAt(k);
-                                                        
-                                                        var sym = keywords[token_char];
+                            var sym = keywords[token_char];
+                            
                             if(sym){
                                  var s = document.createElement('span');
-                                                             s.style.color = sym;
-                                                             s.textContent = token_char;
-                                                             replace_line.push(s);                  
+                                 s.style.color = sym;
+                                 s.textContent = token_char;
+                                 replace_line.push(s);                  
                             }else if(parseInt(token_char)){
-                                                             var s = document.createElement('span');
-                                                             s.style.color = numeric;
-                                                             s.textContent = token_char;
-                                                             replace_line.push(s);  
-                                                        }else{
-                                                                var s = document.createElement('span');
-                                                                s.style.color = variable;
-                                                                if(k === cur_token.length - 1){
-                                                                        s.textContent = token_char + ' ';
-                                                                }else{
-                                                                        s.textContent = token_char;
-                                                                }
-                                                                replace_line.push(s);
-                                                        }
+                                 var s = document.createElement('span');
+                                 s.style.color = numeric;
+                                 s.textContent = token_char;
+                                 replace_line.push(s);  
+                            }else{
+                                 var s = document.createElement('span');
+                                 s.style.color = variable;
+                                                                
+                                 if(k === cur_token.length - 1){
+                                     s.textContent = token_char + ' ';
+                                 }else{
+                                     s.textContent = token_char;
+                                 }
+                                                                
+                                replace_line.push(s);
+                           }
                         }
                     }
                 }
@@ -138,6 +140,7 @@
                       }else{
                             line.insertBefore(line_num, line.children[0]); 
                       }
+                      
                 }else{ 
                       line.insertAdjacentElement("AfterBegin", line_num); 
                }     
